@@ -8,20 +8,23 @@ services:
     image: crawl4ai-mcp:latest
     restart: unless-stopped
     
+    ports:
+      - "8000:8000"
+    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.crawl4ai-mcp.loadbalancer.server.port=8000"
+    
     environment:
       # Crawl4AI API Configuration
       - CRAWL4AI_URL=${CRAWL4AI_URL:-https://crawl4ai-u53948.vm.elestio.app}
       - CRAWL4AI_USERNAME=${CRAWL4AI_USERNAME:-root}
       - CRAWL4AI_PASSWORD=${CRAWL4AI_PASSWORD}
       
-      # Server Configuration (optional)
-      - PORT=${PORT:-8000}
-      - HOST=${HOST:-0.0.0.0}
-    
-    # Port mapping removed - Elast.io handles this automatically
-    # For local development, uncomment:
-    # ports:
-    #   - "${PORT:-8000}:${PORT:-8000}"
+      # Server Configuration
+      - PORT=8000
+      - HOST=0.0.0.0
+      - PYTHONUNBUFFERED=1
     
     # Health check
     healthcheck:
