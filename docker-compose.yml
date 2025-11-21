@@ -1,12 +1,11 @@
 version: '3.8'
 
 services:
-  crawl4ai-mcp:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     image: crawl4ai-mcp:latest
-    container_name: crawl4ai-mcp-server
     restart: unless-stopped
     
     environment:
@@ -48,6 +47,3 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    
-    # Network mode
-    network_mode: bridge
