@@ -9,11 +9,11 @@ services:
     restart: unless-stopped
     
     ports:
-      - "8000:8000"
+      - "8001:8001"
     
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.crawl4ai-mcp.loadbalancer.server.port=8000"
+      - "traefik.http.services.crawl4ai-mcp.loadbalancer.server.port=8001"
     
     environment:
       # Crawl4AI API Configuration
@@ -22,7 +22,7 @@ services:
       - CRAWL4AI_PASSWORD=${CRAWL4AI_PASSWORD}
       
       # Server Configuration
-      - PORT=8000
+      - PORT=8001
       - HOST=0.0.0.0
       - PYTHONUNBUFFERED=1
     
