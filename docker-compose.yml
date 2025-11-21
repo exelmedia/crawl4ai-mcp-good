@@ -19,9 +19,10 @@ services:
       - PORT=${PORT:-8000}
       - HOST=${HOST:-0.0.0.0}
     
-    # Port mapping (optional, MCP uses stdio)
-    ports:
-      - "${PORT:-8000}:${PORT:-8000}"
+    # Port mapping removed - Elast.io handles this automatically
+    # For local development, uncomment:
+    # ports:
+    #   - "${PORT:-8000}:${PORT:-8000}"
     
     # Health check
     healthcheck:
