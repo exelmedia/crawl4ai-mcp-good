@@ -8,6 +8,8 @@ services:
     image: crawl4ai-mcp:latest
     restart: unless-stopped
     
+    command: python -m crawl4ai_mcp.server
+    
     environment:
       # Crawl4AI API Configuration
       - CRAWL4AI_URL=${CRAWL4AI_URL:-https://crawl4ai-u53948.vm.elestio.app}
